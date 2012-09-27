@@ -3158,8 +3158,6 @@ static DEVICE_ATTR(object_write, S_IRUGO | S_IWUSR | S_IWGRP, NULL,
 		   qt602240_object_setting);
 static DEVICE_ATTR(dbg_switch, S_IRUGO | S_IWUSR | S_IWGRP, NULL,
 		   mxt224_debug_setting);
-		   
-static DEVICE_ATTR(mov_hysti, 0666, show_mov_hysti, store_mov_hysti);
 
 static int sec_touchscreen_enable(struct mxt224_data *data)
 {
@@ -3225,7 +3223,6 @@ static struct attribute *qt602240_attrs[] = {
 	&dev_attr_object_show.attr,
 	&dev_attr_object_write.attr,
 	&dev_attr_dbg_switch.attr,
-	&dev_attr_mov_hysti.attr,
 	NULL
 };
 
@@ -3357,8 +3354,8 @@ static int __devinit mxt224_probe(struct i2c_client *client,
 		data->atchcalsthr_e = pdata->atchcalsthr_e;
 		data->noise_suppression_cfg = pdata->t48_config_batt_e + 1;
 		data->noise_suppression_cfg_ta = pdata->t48_config_chrg_e + 1;
-		data->tchthr_batt_e= pdata->tchthr_batt_e;
-		data->tchthr_charging_e= pdata->tchthr_charging_e;
+		data->tchthr_batt_e = pdata->tchthr_batt_e;
+		data->tchthr_charging_e = pdata->tchthr_charging_e;
 		data->calcfg_batt_e = pdata->calcfg_batt_e;
 		data->calcfg_charging_e = pdata->calcfg_charging_e;
 		data->atchfrccalthr_e = pdata->atchfrccalthr_e;
@@ -3676,7 +3673,7 @@ static int __devinit mxt224_probe(struct i2c_client *client,
 #endif
 
 #ifdef CONFIG_HAS_EARLYSUSPEND
-#if defined(CONFIG_TARGET_LOCALE_NA) || defined(CONFIG_TARGET_LOCALE_NAATT)
+#if defined(CONFIG_TARGET_LOCALE_NA) || defined(CONFIG_TARGET_LOCALE_NAATT) || defined(CONFIG_TARGET_LOCALE_KOR)
 	data->early_suspend.level = EARLY_SUSPEND_LEVEL_DISABLE_FB + 1;
 #else
 	data->early_suspend.level = EARLY_SUSPEND_LEVEL_BLANK_SCREEN + 1;

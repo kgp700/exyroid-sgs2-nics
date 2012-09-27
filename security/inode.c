@@ -41,13 +41,6 @@ static ssize_t default_write_file(struct file *file, const char __user *buf,
 	return count;
 }
 
-static struct dentry *get_sb(struct file_system_type *fs_type,
-                 int flags, const char *dev_name,
-                 void *data)
-{
-        return mount_single(fs_type, flags, data, fill_super);
-}
-
 static int default_open(struct inode *inode, struct file *file)
 {
 	if (inode->i_private)

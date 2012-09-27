@@ -2425,19 +2425,6 @@ extern int generic_block_fiemap(struct inode *inode,
 				struct fiemap_extent_info *fieinfo, u64 start,
 				u64 len, get_block_t *get_block);
 
-extern int get_sb_bdev(struct file_system_type *fs_type,
-       int flags, const char *dev_name, void *data,
-       int (*fill_super)(struct super_block *, void *, int),
-       struct vfsmount *mnt);
-extern int get_sb_single(struct file_system_type *fs_type,
-       int flags, void *data,
-       int (*fill_super)(struct super_block *, void *, int),
-       struct vfsmount *mnt);
-extern int get_sb_nodev(struct file_system_type *fs_type,
-       int flags, void *data,
-       int (*fill_super)(struct super_block *, void *, int),
-       struct vfsmount *mnt);
-
 extern void get_filesystem(struct file_system_type *fs);
 extern void put_filesystem(struct file_system_type *fs);
 extern struct file_system_type *get_fs_type(const char *name);

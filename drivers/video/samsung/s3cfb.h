@@ -170,7 +170,7 @@ struct s3cfb_global {
 	unsigned int		wq_count;
 	struct fb_info		**fb;
 
-	ktime_t      vsync_timestamp;
+	ktime_t      		vsync_timestamp;
 
 	atomic_t		enabled_win;
 	enum s3cfb_output_t	output;
@@ -242,7 +242,7 @@ struct s3cfb_user_chroma {
 #if defined(CONFIG_CPU_EXYNOS4210)
 #define S3CFB_SET_WIN_MEM_START		_IOW('F', 312, u32)
 #endif
-#define S3CFB_WAIT_FOR_VSYNC		_IOR('F', 311, u64) // New IOCTL that waits for vsync and returns a timestamp
+#define S3CFB_WAIT_FOR_VSYNC		_IOR('F', 314, u64) // New IOCTL that waits for vsync and returns a timestamp
 
 extern struct fb_ops			s3cfb_ops;
 extern inline struct s3cfb_global	*get_fimd_global(int id);

@@ -193,7 +193,7 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/i386/ -e s/sun4u/sparc64/ \
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 export KBUILD_BUILDHOST := $(SUBARCH)
 ARCH		?= arm
-CROSS_COMPILE	?= /root/1test/toolchain/arm-eabi-4.5.4/bin/arm-eabi-
+CROSS_COMPILE	?= /root/1test/toolchain/arm-eabi-4.5.4-201110/bin/arm-eabi-
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
@@ -350,8 +350,8 @@ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 CFLAGS_MODULE   =
 AFLAGS_MODULE   =
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL	= -mtune=cortex-a9 -march=armv7-a -mfpu=neon -ftree-vectorize -fno-gcse -fsingle-precision-constant -funswitch-loops -fprofile-correction -falign-loops -fipa-cp-clone -fgraphite -fgraphite-identity -floop-interchange -floop-strip-mine -floop-block -floop-parallelize-all -ftree-loop-linear -pipe
-AFLAGS_KERNEL	= -mtune=cortex-a9 -march=armv7-a -mfpu=neon -ftree-vectorize -fno-gcse -fsingle-precision-constant -funswitch-loops -fprofile-correction -falign-loops -fipa-cp-clone -fgraphite -fgraphite-identity -floop-interchange -floop-strip-mine -floop-block -floop-parallelize-all -ftree-loop-linear -pipe
+CFLAGS_KERNEL	= -mtune=cortex-a9 -march=armv7-a -mfpu=neon -ftree-vectorize -fno-gcse -fsingle-precision-constant -funswitch-loops -fprofile-correction -fipa-cp-clone -fgraphite -fgraphite-identity -floop-interchange -floop-strip-mine -floop-block -floop-parallelize-all -ftree-loop-linear -ftree-loop-distribution -pipe
+AFLAGS_KERNEL	= -mtune=cortex-a9 -march=armv7-a -mfpu=neon -ftree-vectorize -fno-gcse -fsingle-precision-constant -funswitch-loops -fprofile-correction -fipa-cp-clone -fgraphite -fgraphite-identity -floop-interchange -floop-strip-mine -floop-block -floop-parallelize-all -ftree-loop-linear -ftree-loop-distribution -pipe
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
@@ -371,9 +371,9 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-delete-null-pointer-checks \
 		   -mtune=cortex-a9 -march=armv7-a -mfpu=neon -mfloat-abi=softfp \
 		   -fno-gcse -ftree-vectorize -fsingle-precision-constant -funswitch-loops \
-		   -fprofile-correction -falign-loops -fipa-cp-clone \
+		   -fprofile-correction -fipa-cp-clone \
 		   -fgraphite -fgraphite-identity -floop-interchange -floop-strip-mine \
-		   -floop-block -floop-parallelize-all -ftree-loop-linear \
+		   -floop-block -floop-parallelize-all -ftree-loop-linear -ftree-loop-distribution \
 		   -pipe -mthumb
 
 KBUILD_AFLAGS_KERNEL :=

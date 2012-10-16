@@ -350,8 +350,8 @@ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 CFLAGS_MODULE   =
 AFLAGS_MODULE   =
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL	= -mtune=cortex-a9 -march=armv7-a -mfpu=neon -ftree-vectorize -fno-gcse -fsingle-precision-constant -funswitch-loops -fprofile-correction -fipa-cp-clone -fgraphite -fgraphite-identity -floop-interchange -floop-strip-mine -floop-block -floop-parallelize-all -ftree-loop-linear -ftree-loop-distribution -pipe
-AFLAGS_KERNEL	= -mtune=cortex-a9 -march=armv7-a -mfpu=neon -ftree-vectorize -fno-gcse -fsingle-precision-constant -funswitch-loops -fprofile-correction -fipa-cp-clone -fgraphite -fgraphite-identity -floop-interchange -floop-strip-mine -floop-block -floop-parallelize-all -ftree-loop-linear -ftree-loop-distribution -pipe
+CFLAGS_KERNEL	= -mtune=cortex-a9 -march=armv7-a -mfpu=neon -ftree-vectorize -fno-gcse -fsingle-precision-constant -funswitch-loops -fprofile-correction -funsafe-math-optimizations -fipa-cp-clone -fgraphite -fgraphite-identity -floop-interchange -floop-strip-mine -floop-block -floop-parallelize-all -ftree-loop-distribution -pipe
+AFLAGS_KERNEL	= -mtune=cortex-a9 -march=armv7-a -mfpu=neon -ftree-vectorize -fno-gcse -fsingle-precision-constant -funswitch-loops -fprofile-correction -funsafe-math-optimizations -fipa-cp-clone -fgraphite -fgraphite-identity -floop-interchange -floop-strip-mine -floop-block -floop-parallelize-all -ftree-loop-distribution -pipe
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
@@ -371,9 +371,9 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-delete-null-pointer-checks \
 		   -mtune=cortex-a9 -march=armv7-a -mfpu=neon -mfloat-abi=softfp \
 		   -fno-gcse -ftree-vectorize -fsingle-precision-constant -funswitch-loops \
-		   -fprofile-correction -fipa-cp-clone \
+		   -fprofile-correction -funsafe-math-optimizations -fipa-cp-clone \
 		   -fgraphite -fgraphite-identity -floop-interchange -floop-strip-mine \
-		   -floop-block -floop-parallelize-all -ftree-loop-linear -ftree-loop-distribution \
+		   -floop-block -floop-parallelize-all -ftree-loop-distribution \
 		   -pipe -mthumb
 
 KBUILD_AFLAGS_KERNEL :=

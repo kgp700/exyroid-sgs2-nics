@@ -1106,7 +1106,7 @@ static int __devinit mxt224_init_touch_driver(struct mxt224_data *data)
 {
 	struct object_t *object_table;
 	u32 read_crc = 0;
-	u32 calc_crc;
+	u32 calc_crc = 0;
 	u16 crc_address;
 	u16 dummy;
 	int i;
@@ -1660,14 +1660,14 @@ static irqreturn_t mxt224_irq_thread(int irq, void *ptr)
 
 		if ((msg[0] == 0x1) &&
 			((msg[1] & 0x10) == 0x10)) {	/* caliration */
-			printk(KERN_ERR "[TSP] Calibration!!!!!!");
+			printk(KERN_ERR "[TSP] Calibration!!!!!!\n");
 			Doing_calibration_flag = 1;
 		} else if ((msg[0] == 0x1) &&
 			((msg[1] & 0x40) == 0x40)) { /* overflow */
 			printk(KERN_ERR "[TSP] Overflow!!!!!!");
 		} else if ((msg[0] == 0x1) &&
 			((msg[1] & 0x10) == 0x00)) {	/* caliration */
-			printk(KERN_ERR "[TSP] Calibration End!!!!!!");
+			printk(KERN_ERR "[TSP] Calibration End!!!!!!\n");
 
 			Doing_calibration_flag = 0;
 			if (cal_check_flag == 1) {
